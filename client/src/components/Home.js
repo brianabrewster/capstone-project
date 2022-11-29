@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Login from './Login';
 import Signup from './Signup';
 
-function Home({handleLogin, setCurrentUser}) {
+function Home({handleLogin, setCurrentUser, isStudent, setIsStudent}) {
     const [show, setShow] = useState(false);
     const [signupShow, setSignupShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -22,6 +22,8 @@ function Home({handleLogin, setCurrentUser}) {
                 handleClose={handleClose}
                 handleShow={handleShow}/>
                 <Signup 
+                isStudent={isStudent}
+                setIsStudent={setIsStudent}
                 handleLogin={handleLogin}
                 show={signupShow}
                 handleClose={handleSignupClose}

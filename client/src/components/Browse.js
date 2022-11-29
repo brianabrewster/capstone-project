@@ -2,7 +2,7 @@ import React from 'react';
 import StudentCard from './StudentCard';
 import TeacherCard from './TeacherCard';
 
-function Browse({students, teachers}) {
+function Browse({students, teachers, isStudent}) {
 
     const studentList = students.map((student) => {
         return <StudentCard 
@@ -32,12 +32,7 @@ function Browse({students, teachers}) {
     return(
         <div>
             <h1>Browse...</h1>
-           
-            <h2>Teachers:</h2>
-            <ul>{teacherList}</ul>
-
-            <h2>Students:</h2>
-            <ul>{studentList}</ul>
+            <ul>{isStudent ? teacherList : studentList}</ul>
         </div>
     )
 }

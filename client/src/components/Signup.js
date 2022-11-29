@@ -3,11 +3,10 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
-function Signup({handleShow, show, handleClose, handleLogin}) {
+function Signup({handleShow, show, handleClose, handleLogin, isStudent, setIsStudent}) {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState("")
-    const [isStudent, setIsStudent] = useState(false)
     const [confirmPassword, setConfirmPassword] = useState("")
 
     function handleSubmit(e){

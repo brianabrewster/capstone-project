@@ -15,6 +15,7 @@ function App() {
   const [teachers, setTeachers] = useState([]);
   const [currentUser, setCurrentUser] = useState({})
   const [lessons, setLessons] = useState([]);
+  const [isStudent, setIsStudent] = useState(false)
 
   function handleLogin(user){
     history.push(`/profile`)
@@ -47,13 +48,13 @@ function App() {
         <NavBar />
         <Switch>
           <Route exact path="/">
-            <Home handleLogin={handleLogin} setCurrentUser = {setCurrentUser}/>
+            <Home isStudent={isStudent} setIsStudent={setIsStudent} handleLogin={handleLogin} setCurrentUser = {setCurrentUser}/>
           </Route>
           <Route path="/profile">
             <Profile lessons={lessons} students={students} teachers={teachers}/>
           </Route>
           <Route path="/browse">
-            <Browse students={students} teachers={teachers}/>
+            <Browse students={students} teachers={teachers} isStudent={isStudent}/>
           </Route>
           <Route path="/newlesson">
             <NewLessonForm lessons={lessons} students={students} teachers={teachers}/>
