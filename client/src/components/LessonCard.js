@@ -1,7 +1,9 @@
 function LessonCard({date, time, instrument}) {
     return(
         <div>
-            <p>Lesson Card</p>
+            <h2>{date}</h2>
+            <h3>{time}</h3>
+            <h3>{instrument}</h3>
         </div>
     )
 }

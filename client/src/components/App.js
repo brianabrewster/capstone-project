@@ -22,6 +22,10 @@ function App() {
     setCurrentUser(user)
   }
 
+  function addLesson(newLesson) {
+    setLessons((lessons) => [...lessons, newLesson]);
+  }
+
   useEffect(() => {
     fetch("/lessons")
       .then((r) => r.json())
@@ -41,14 +45,16 @@ function App() {
       .then((r) => r.json())
       .then((teachers) => setTeachers(teachers));
   }, []);
+
+  const updateUser = (user) => setCurrentUser(user)
   
   return (
     <div className="App">
       <header>
-        <NavBar />
+        <NavBar currentUser={currentUser} updateUser={updateUser}/>
         <Switch>
           <Route exact path="/">
-            <Home isStudent={isStudent} setIsStudent={setIsStudent} handleLogin={handleLogin} setCurrentUser = {setCurrentUser}/>
+            <Home isStudent={isStudent} setIsStudent={setIsStudent} handleLogin={handleLogin} currentUser={currentUser} setCurrentUser={setCurrentUser}/>
           </Route>
           <Route path="/profile">
             <Profile lessons={lessons} students={students} teachers={teachers}/>
@@ -57,7 +63,7 @@ function App() {
             <Browse students={students} teachers={teachers} isStudent={isStudent}/>
           </Route>
           <Route path="/newlesson">
-            <NewLessonForm lessons={lessons} students={students} teachers={teachers}/>
+            <NewLessonForm students={students} teachers={teachers} addLesson={addLesson}/>
           </Route>
         </Switch>
       </header>

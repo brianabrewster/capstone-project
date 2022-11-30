@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function TeacherCard({name, age, city, experience, instruments, rate}) {
     return(
@@ -9,7 +10,9 @@ function TeacherCard({name, age, city, experience, instruments, rate}) {
             <p>Instrument: {instruments}</p>
             <p>Experience: {experience}</p>
             <p>Rate: {rate}</p>
+            <Link to='/newlesson'>
             <button>Request a Lesson</button>
+            </Link>
         </div>
     )
 }

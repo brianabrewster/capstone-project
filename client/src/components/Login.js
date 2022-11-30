@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
-function Login({handleShow, show, handleClose, handleLogin, setCurrentUser}){
+function Login({handleShow, show, handleClose, handleLogin, currentUser}){
 
   const [ loginData, setLoginData ] = useState({username: "", password: ""})
   const [errors, setErrors] = useState([]);
@@ -36,7 +36,7 @@ function Login({handleShow, show, handleClose, handleLogin, setCurrentUser}){
 
     return( <>
         <Button variant="primary" onClick={handleShow}>
-          Login
+         {!currentUser? "Logout" : "Login"}
         </Button>
   
         <Modal show={show} onHide={handleClose}>
