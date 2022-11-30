@@ -6,7 +6,6 @@ import Home from './Home';
 import Profile from './Profile';
 import Browse from './Browse';
 import NewLessonForm from './NewLessonForm';
-import Signup from './Signup';
 
 function App() {
 

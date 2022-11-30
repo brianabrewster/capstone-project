@@ -3,8 +3,12 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
-function Signup({handleShow, show, handleClose, handleLogin, isStudent, setIsStudent}) {
-
+function StudentSignup({handleShow, show, handleClose, handleLogin, isStudent, setIsStudent}) {
+    const [name, setName] = useState("");
+    const [age, setAge] = useState("");
+    const [instrument, setInstrument] = useState("");
+    const [city, setCity] = useState(""); 
+    const [experience, setExperience] = useState("");
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
@@ -13,14 +17,19 @@ function Signup({handleShow, show, handleClose, handleLogin, isStudent, setIsStu
         e.preventDefault()
     
         const userData = {
+            name: name,
+            age: age,
+            city: city,
+            instrument: instrument,
+            experience: experience,
             username: username,
             password: password,
             password_confirmation: confirmPassword,
             isStudent: isStudent,
         }
-       const userType = isStudent ? "student" : "teacher"
+      //  const userType = isStudent ? "student" : "teacher"
 
-        fetch(`/signup${userType}`, {
+        fetch('/signupstudent', {
           method: "POST",
           headers: {
            "Content-Type" : "application/json",
@@ -45,7 +54,7 @@ function Signup({handleShow, show, handleClose, handleLogin, isStudent, setIsStu
 
     return(
         <div>
-    <Button variant="primary" onClick={handleShow}>Register</Button>
+    <Button variant="primary" onClick={handleShow}>Reigster as Student</Button>
 
   <Modal show={show}>
     <Modal.Header >
@@ -53,6 +62,56 @@ function Signup({handleShow, show, handleClose, handleLogin, isStudent, setIsStu
     </Modal.Header>
     <Modal.Body>
       <Form onSubmit={(e) => handleSubmit(e)}>
+        <Form.Group controlId="name">
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            type="name"
+            placeholder="Name"
+            autoFocus
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </Form.Group>
+        <Form.Group controlId="age">
+          <Form.Label>Age</Form.Label>
+          <Form.Control
+            type="age"
+            placeholder="Age"
+            autoFocus
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+          />
+        </Form.Group>
+        <Form.Group controlId="city">
+          <Form.Label>City</Form.Label>
+          <Form.Control
+            type="city"
+            placeholder="City"
+            autoFocus
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+          />
+        </Form.Group>
+        <Form.Group controlId="instrument">
+          <Form.Label>Instrument</Form.Label>
+          <Form.Control
+            type="instrument"
+            placeholder="Instrument"
+            autoFocus
+            value={instrument}
+            onChange={(e) => setInstrument(e.target.value)}
+          />
+        </Form.Group>
+        <Form.Group controlId="experience">
+          <Form.Label>Experience</Form.Label>
+          <Form.Control
+            type="experience"
+            placeholder="Experience (Number of Years)"
+            autoFocus
+            value={experience}
+            onChange={(e) => setExperience(e.target.value)}
+          />
+        </Form.Group>
         <Form.Group controlId="username">
           <Form.Label>Username</Form.Label>
           <Form.Control
@@ -90,13 +149,6 @@ function Signup({handleShow, show, handleClose, handleLogin, isStudent, setIsStu
             value={isStudent}
             onClick={(e) => setIsStudent(true)}
           />
-        <Form.Check 
-            inline
-            type="checkbox"
-            label="Instructor"
-            value={isStudent}
-            onClick={(e) => setIsStudent(false)}
-          />
         <Button onClick={handleClose}>Close</Button>
          <Button variant="primary" type="submit" >
         Register
@@ -108,4 +160,4 @@ function Signup({handleShow, show, handleClose, handleLogin, isStudent, setIsStu
     )
 }
 
-export default Signup;
+export default StudentSignup;

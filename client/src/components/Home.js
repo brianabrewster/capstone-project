@@ -1,14 +1,18 @@
 import React, {useState} from 'react';
 import Login from './Login';
-import Signup from './Signup';
+import StudentSignup from './StudentSignup';
+import TeacherSignup from './TeacherSignup';
 
 function Home({handleLogin, currentUser, setCurrentUser, isStudent, setIsStudent}) {
     const [show, setShow] = useState(false);
     const [signupShow, setSignupShow] = useState(false);
+    const [teacherSignupShow, setTeacherSignupShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const handleSignupShow = () => setSignupShow(true)
+    const handleTeacherSignupShow = () => setTeacherSignupShow(true)
     const handleSignupClose = () => setSignupShow(false);
+    const handleTeacherSignupClose = () => setTeacherSignupShow(false);
 
     return(
         <div>
@@ -22,13 +26,20 @@ function Home({handleLogin, currentUser, setCurrentUser, isStudent, setIsStudent
                 show={show}
                 handleClose={handleClose}
                 handleShow={handleShow}/>
-                <Signup 
+                <StudentSignup 
                 isStudent={isStudent}
                 setIsStudent={setIsStudent}
                 handleLogin={handleLogin}
                 show={signupShow}
                 handleClose={handleSignupClose}
                 handleShow={handleSignupShow}/>
+                <TeacherSignup 
+                isStudent={isStudent}
+                setIsStudent={setIsStudent}
+                handleLogin={handleLogin}
+                show={teacherSignupShow}
+                handleClose={handleTeacherSignupClose}
+                handleShow={handleTeacherSignupShow}/>
             </div>
         </div>
     )

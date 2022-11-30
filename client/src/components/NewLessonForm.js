@@ -18,12 +18,10 @@ function NewLessonForm({students, teachers, addLesson}) {
               date: date,
               time: time,
               instrument: instrument,
-              teacher_id: parseInt(teacherName),
-              student_id: parseInt(studentName),
             }),
           })
             .then((r) => r.json())
-            .then((data) => addLesson(data[0]));
+            .then((data) => addLesson(data));
         }
 
     
