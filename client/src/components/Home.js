@@ -20,6 +20,8 @@ function Home({handleLogin, currentUser, setCurrentUser, isStudent, setIsStudent
             <h2>Sign In / Register</h2>
             <div>
                 <Login 
+                isStudent={isStudent}
+                setIsStudent={setIsStudent}
                 handleLogin={handleLogin}
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}

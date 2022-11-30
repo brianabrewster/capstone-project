@@ -9,7 +9,15 @@ class LessonsController < ApplicationController
     end
 
     def create
-        render json: Lesson.create(lesson_params), status: :created
+        lesson = Lesson.create!(lesson_params)
+        binding.break
+        render json: lesson, status: :created
+    end
+
+    def update
+        lesson = Lesson.find(params[:id])
+        lesson.update(lesson_params)
+        render json: lesson, status: :accepted
     end
 
     def destroy
@@ -21,6 +29,6 @@ class LessonsController < ApplicationController
     private 
 
     def lesson_params
-        params.permit(:date, :time, :instrument)
+        params.permit(:date, :time, :instrument, :student_id, :teacher_id)
     end
 end

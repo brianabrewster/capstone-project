@@ -2,7 +2,7 @@ import React from 'react';
 import StudentCard from './StudentCard';
 import TeacherCard from './TeacherCard';
 
-function Browse({students, teachers, isStudent}) {
+function Browse({students, teachers, isStudent, currentUser}) {
 
     const studentList = students.map((student) => {
         return <StudentCard 
@@ -28,11 +28,11 @@ function Browse({students, teachers, isStudent}) {
         rate={teacher.rate}
         />
     })
-
+    console.log(currentUser)
     return(
         <div>
             <h1>Browse...</h1>
-            <ul>{isStudent ? teacherList : studentList}</ul>
+            <ul>{currentUser.is_student ? teacherList : studentList}</ul>
         </div>
     )
 }

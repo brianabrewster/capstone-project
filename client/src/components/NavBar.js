@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function NavBar({currentUser, updateUser}) {
+function NavBar({currentUser, setCurrentUser}) {
 
 
   const handleLogOut = (e) => {
@@ -11,17 +11,18 @@ function NavBar({currentUser, updateUser}) {
       })
       .then(res =>{
         if(res.ok){
-          updateUser(false)
+          setCurrentUser()
         }
       })
     }
 
   return (
-    <nav>
+    <nav className="navbar">
+      <h1>Prodigy</h1>
       <NavLink exact to="/">Home</NavLink>
       <NavLink to="/profile">Profile</NavLink>
       <NavLink to="/browse">Browse</NavLink>
-      {currentUser? <NavLink to="/">Login/SignUp</NavLink>:
+      {!currentUser ? <NavLink to="/">Login/SignUp</NavLink>:
         <NavLink to="/" onClick={handleLogOut}>Log Out</NavLink>}
     </nav>
   );

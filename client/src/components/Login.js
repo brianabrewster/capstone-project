@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
-function Login({handleShow, show, handleClose, handleLogin, currentUser}){
+function Login({handleShow, show, handleClose, handleLogin, currentUser, isStudent, setIsStudent}){
 
   const [ loginData, setLoginData ] = useState({username: "", password: ""})
   const [errors, setErrors] = useState([]);
@@ -23,7 +23,7 @@ function Login({handleShow, show, handleClose, handleLogin, currentUser}){
       headers: {
           "Content-Type": "application/json",
       },
-      body: JSON.stringify(loginData)
+      body: JSON.stringify({...loginData, isStudent: isStudent})
     })
     .then((res) => {
       if(res.ok) {
@@ -36,7 +36,7 @@ function Login({handleShow, show, handleClose, handleLogin, currentUser}){
 
     return( <>
         <Button variant="primary" onClick={handleShow}>
-         {!currentUser? "Logout" : "Login"}
+         {currentUser? "Logout" : "Login"}
         </Button>
   
         <Modal show={show} onHide={handleClose}>
@@ -67,6 +67,13 @@ function Login({handleShow, show, handleClose, handleLogin, currentUser}){
                   autoFocus
                 />
               </Form.Group>
+              <Form.Check 
+                inline
+                type="checkbox"
+                label="Student"
+                value={isStudent}
+                onClick={(e) => setIsStudent(true)}
+            />
               <Button className = "closeLog"  onClick={handleClose}>
               Close
             </Button>

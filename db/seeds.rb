@@ -13,12 +13,23 @@ rates = [
 "$65/hour"
 ]
 
+cities = [
+    "Austin",
+    "Houston", 
+    "Los Angeles",
+    "New York City", 
+    "Chicago",
+    "Phoenix", 
+    "Georgia",
+    "Boston"
+]
+
 50.times do |index| 
-    Student.create(name: Faker::Name.name, age: Faker::Number.between(from: 8, to: 40), city: Faker::Address.city, instruments: Faker::Music.instrument, experience: "#{rand(0..3)} years", username: Faker::Name.initials(number: 4), password: Faker::Name.initials(number: 4), is_student: true)
+    Student.create(name: Faker::Name.name, age: Faker::Number.between(from: 8, to: 40), city: cities.sample, instruments: Faker::Music.instrument, experience: "#{rand(0..3)} years", username: Faker::Name.initials(number: 4), password: Faker::Name.initials(number: 4), is_student: true)
 end
 
 50.times do |index|
-    Teacher.create(name: Faker::Name.name, age: Faker::Number.between(from: 22, to: 50), city: Faker::Address.city, instruments: Faker::Music.instrument, experience: "#{rand(5..30)} years", rate: rates.sample, username: Faker::Name.initials(number: 4), password: Faker::Name.initials(number: 4), is_student: false)
+    Teacher.create(name: Faker::Name.name, age: Faker::Number.between(from: 22, to: 50), city: cities.sample, instruments: Faker::Music.instrument, experience: "#{rand(5..30)} years", rate: rates.sample, username: Faker::Name.initials(number: 4), password: Faker::Name.initials(number: 4), is_student: false)
 end
 
 

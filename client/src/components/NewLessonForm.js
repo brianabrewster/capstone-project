@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
 
 function NewLessonForm({students, teachers, addLesson}) {
+
+    const history = useHistory();
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
     const [instrument, setInstrument] = useState("");
@@ -9,6 +12,7 @@ function NewLessonForm({students, teachers, addLesson}) {
 
     function handleSubmit(e) {
         e.preventDefault();
+        history.push("/profile")
         fetch("/lessons", {
             method: "POST",
             headers: {
@@ -18,6 +22,8 @@ function NewLessonForm({students, teachers, addLesson}) {
               date: date,
               time: time,
               instrument: instrument,
+              student_id: studentName,
+              teacher_id: teacherName
             }),
           })
             .then((r) => r.json())
@@ -26,9 +32,9 @@ function NewLessonForm({students, teachers, addLesson}) {
 
     
     return(
-        <div>
+        <div onSubmit={handleSubmit}>
         <h2>Schedule a lesson</h2>
-        <form onSubmit={handleSubmit}>
+        <form>
           <label>Date: </label>
           <input
             type="text"

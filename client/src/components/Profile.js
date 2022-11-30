@@ -1,8 +1,8 @@
 import React from 'react';
 import LessonCard from './LessonCard';
 
-function Profile({lessons, students, teachers}) {
-
+function Profile({lessons, removeLesson, updateLesson}) {
+    console.log(lessons)
     const myLessonsList = lessons.map((lesson) => {
         return <LessonCard 
         key={lesson.id}
@@ -10,6 +10,9 @@ function Profile({lessons, students, teachers}) {
         date={lesson.date}
         time={lesson.time}
         instrument={lesson.instrument}
+        lesson={lesson}
+        removeLesson={removeLesson}
+        updateLesson={updateLesson}
         />
     })
 

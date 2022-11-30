@@ -6,6 +6,7 @@ import Home from './Home';
 import Profile from './Profile';
 import Browse from './Browse';
 import NewLessonForm from './NewLessonForm';
+import { current } from '@reduxjs/toolkit';
 
 function App() {
 
@@ -24,6 +25,16 @@ function App() {
   function addLesson(newLesson) {
     setLessons((lessons) => [...lessons, newLesson]);
   }
+
+
+  useEffect(() => {
+    fetch("/me").then((response) => {
+      if (response.ok) {
+        response.json().then((user) => setCurrentUser(user));
+      }
+    });
+  }, []);
+
 
   useEffect(() => {
     fetch("/lessons")
@@ -44,22 +55,40 @@ function App() {
       .then((r) => r.json())
       .then((teachers) => setTeachers(teachers));
   }, []);
-
-  const updateUser = (user) => setCurrentUser(user)
   
+
+  function removeLesson(id) {
+    const removeSelectedLesson = lessons.filter(
+      (lesson) => lesson.id !== id
+    );
+    setLessons(removeSelectedLesson);
+  }
+
+
+  function updateLesson(updatedLesson) {
+    const updatedLessons = lessons.map((lesson) => {
+      if (lesson.id === updatedLesson.id) {
+        return updatedLesson;
+      } else {
+        return lesson;
+      }
+    });
+    setLessons(updatedLessons);
+  }
+
   return (
     <div className="App">
       <header>
-        <NavBar currentUser={currentUser} updateUser={updateUser}/>
+        <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser}/>
         <Switch>
           <Route exact path="/">
             <Home isStudent={isStudent} setIsStudent={setIsStudent} handleLogin={handleLogin} currentUser={currentUser} setCurrentUser={setCurrentUser}/>
           </Route>
           <Route path="/profile">
-            <Profile lessons={lessons} students={students} teachers={teachers}/>
+            <Profile lessons={lessons} students={students} teachers={teachers} removeLesson={removeLesson} updateLesson={updateLesson}/>
           </Route>
           <Route path="/browse">
-            <Browse students={students} teachers={teachers} isStudent={isStudent}/>
+            <Browse students={students} teachers={teachers} isStudent={isStudent} currentUser={currentUser}/>
           </Route>
           <Route path="/newlesson">
             <NewLessonForm students={students} teachers={teachers} addLesson={addLesson}/>
