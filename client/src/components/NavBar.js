@@ -1,8 +1,9 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 function NavBar({currentUser, setCurrentUser}) {
 
+  const history = useHistory();
 
   const handleLogOut = (e) => {
     e.preventDefault();
@@ -11,7 +12,8 @@ function NavBar({currentUser, setCurrentUser}) {
       })
       .then(res =>{
         if(res.ok){
-          setCurrentUser()
+          history.push('/')
+          setCurrentUser(null)
         }
       })
     }

@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 
 function Login({handleShow, show, handleClose, handleLogin, currentUser, isStudent, setIsStudent}){
 
-  const [ loginData, setLoginData ] = useState({username: "", password: ""})
+  const [loginData, setLoginData] = useState({username: "", password: ""})
   const [errors, setErrors] = useState([]);
 
   const handleOnChange = (event) => {
@@ -34,12 +34,13 @@ function Login({handleShow, show, handleClose, handleLogin, currentUser, isStude
     })
   }
 
-    return( <>
+    return( 
+    <>
         <Button variant="primary" onClick={handleShow}>
          {currentUser? "Logout" : "Login"}
         </Button>
   
-        <Modal show={show} onHide={handleClose}>
+        <Modal className="login-form" show={show} onHide={handleClose}>
           <Modal.Header >
             <Modal.Title>Login</Modal.Title>
           </Modal.Header>

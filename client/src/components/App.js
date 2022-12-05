@@ -6,14 +6,13 @@ import Home from './Home';
 import Profile from './Profile';
 import Browse from './Browse';
 import NewLessonForm from './NewLessonForm';
-import { current } from '@reduxjs/toolkit';
 
 function App() {
 
   const history = useHistory()
   const [students, setStudents] = useState([]);
   const [teachers, setTeachers] = useState([]);
-  const [currentUser, setCurrentUser] = useState({})
+  const [currentUser, setCurrentUser] = useState(null)
   const [lessons, setLessons] = useState([]);
   const [isStudent, setIsStudent] = useState(false)
 
@@ -76,6 +75,7 @@ function App() {
     setLessons(updatedLessons);
   }
 
+
   return (
     <div className="App">
       <header>
@@ -85,10 +85,10 @@ function App() {
             <Home isStudent={isStudent} setIsStudent={setIsStudent} handleLogin={handleLogin} currentUser={currentUser} setCurrentUser={setCurrentUser}/>
           </Route>
           <Route path="/profile">
-            <Profile lessons={lessons} students={students} teachers={teachers} removeLesson={removeLesson} updateLesson={updateLesson}/>
+            <Profile lessons={lessons} students={students} teachers={teachers} removeLesson={removeLesson} updateLesson={updateLesson} currentUser={currentUser}/>
           </Route>
           <Route path="/browse">
-            <Browse students={students} teachers={teachers} isStudent={isStudent} currentUser={currentUser}/>
+            <Browse setStudents={setStudents} setTeachers={setTeachers} students={students} teachers={teachers} isStudent={isStudent} currentUser={currentUser}/>
           </Route>
           <Route path="/newlesson">
             <NewLessonForm students={students} teachers={teachers} addLesson={addLesson}/>
