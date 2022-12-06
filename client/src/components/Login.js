@@ -36,10 +36,10 @@ function Login({handleShow, show, handleClose, handleLogin, currentUser, isStude
 
     return( 
     <>
-        <Button variant="primary" onClick={handleShow}>
+        <Button className="home-button" variant="primary" onClick={handleShow}>
          {currentUser? "Logout" : "Login"}
         </Button>
-  
+      <div>
         <Modal className="login-form" show={show} onHide={handleClose}>
           <Modal.Header >
             <Modal.Title>Login</Modal.Title>
@@ -94,6 +94,7 @@ function Login({handleShow, show, handleClose, handleLogin, currentUser, isStude
        
           </Modal.Footer>
         </Modal>
+        </div>
       </>
 
 

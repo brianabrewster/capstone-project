@@ -57,9 +57,9 @@ function TeacherSignup({handleShow, show, handleClose, handleLogin, isStudent, s
 
     return(
         <div>
-    <Button variant="primary" onClick={handleShow}>Register as Instructor</Button>
+    <Button className="home-button" variant="primary" onClick={handleShow}>Register as Instructor</Button>
 
-  <Modal show={show}>
+  <Modal className="signup" show={show}>
     <Modal.Header >
       <Modal.Title>Register</Modal.Title>
     </Modal.Header>

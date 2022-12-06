@@ -1,17 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import StudentCard from './StudentCard';
 import TeacherCard from './TeacherCard';
 
 function Browse({students, teachers, setStudents, setTeachers, currentUser}) {
 
-    // const [selectedCity, setSelectedCity] = useState("Select your city...")
-
-    // let filteredTeachers = teachers.filter((teacher) => {
-    //     return teacher.city === selectedCity
-    // })
-    // let filteredStudents = students.filter((student) => {
-    //     return student.city === selectedCity
-    // })
 
     function handleChange(e) {
         let filteredTeachers = teachers.filter((teacher) => {
@@ -58,14 +50,14 @@ function Browse({students, teachers, setStudents, setTeachers, currentUser}) {
                 name="cities"
                 onChange={handleChange}>
                 <option value="">Select your city...</option>
-                <option value="1">Austin</option>
-                <option value="2">Houston</option>
-                <option value="3">Los Angeles</option>
-                <option value="4">New York</option>
-                <option value="5">Chicago</option>
-                <option value="6">Phoenix</option>
-                <option value="7">Georgia</option>
-                <option value="8">Boston</option>
+                <option value="Austin">Austin</option>
+                <option value="Houston">Houston</option>
+                <option value="Los Angeles">Los Angeles</option>
+                <option value="New York">New York</option>
+                <option value="Chicago">Chicago</option>
+                <option value="Phoenix">Phoenix</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Boston">Boston</option>
             </select>
             <ul>{currentUser?.is_student ? teacherList : studentList}</ul>
         </div>

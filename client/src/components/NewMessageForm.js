@@ -30,7 +30,7 @@ const history = useHistory();
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <h1>Send a message:</h1>
          <label>To: </label>
           <select

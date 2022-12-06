@@ -109,7 +109,7 @@ function App() {
           <Route path="/browse">
             <Browse setStudents={setStudents} setTeachers={setTeachers} students={students} teachers={teachers} isStudent={isStudent} currentUser={currentUser}/>
           </Route>
-          <Route path="/newlesson">
+          <Route path="/newlesson/">
             <NewLessonForm students={students} teachers={teachers} addLesson={addLesson}/>
           </Route>
           <Route path="/newmessage">

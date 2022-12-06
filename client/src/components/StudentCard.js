@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import NewMessageForm from "./NewMessageForm";
 
 function StudentCard({name, age, city, instruments, experience}) {
     return(

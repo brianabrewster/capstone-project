@@ -10,7 +10,6 @@ class LessonsController < ApplicationController
 
     def create
         lesson = Lesson.create!(lesson_params)
-        binding.break
         render json: lesson, status: :created
     end
 

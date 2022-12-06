@@ -5,7 +5,6 @@
 body {
   background-color: rgb(186, 195, 192);
   font-family: 'Optima', sans-serif;
-  padding-top: 6px;
   padding-left: 25px;
   padding-right: 25px;
   line-height: 25px;
@@ -40,37 +39,47 @@ code {
 }
 
 nav {
+  background-color: rgb(106, 111, 109);
+  opacity: .7;
   text-align: center;
-  margin-left: 10%;
-  margin-right: 10%;
-  border-radius: 3px;
+  border-radius: 5px;
   box-sizing: border-box;
-  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
   flex: 250px;
   display: flex;
   justify-content: space-between;
 }
 
 nav a:hover {
- border-bottom: 2px solid #3707ba;
+  font-weight: bold;
 }
 
 nav a:active {
-  background-color: #3707ba;
-  border-bottom: 2px solid #3707ba;
+  font-weight: bold;
 }
 nav h1 {
   font-family: 'Comic Sans', cursive;
   font-size: 40px;
-  margin-top: 0px;
-  margin-left: -30px;
+  margin-top: 10px;
+  margin-left: -9px;
  }
 
  .login-form {
-  align-content: center;
-  align-items: center;
-  padding-top: 30px;
+  margin-top: -200px;
   text-transform: uppercase;
+  max-width: 20%;
+  border-style: inset;
+  padding: 10px;
+}
+
+.signup {
+  margin-top: -250px;
+  text-transform: uppercase; 
+  max-width: 20%;
+  border-style: inset;
+  padding: 10px;
 }
 
  .new-message {
@@ -78,5 +87,16 @@ nav h1 {
   align-items: center;
   margin-top: 10px;
   padding: 30px;
-  text-transform: uppercase;
+}
+
+
+.home-button {
+  text-align: center;
+  font-size: 20px;
+  width: 300px;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 3pt 6px rgba(3, 3, 3, 0.8);
+  box-shadow: inset;
 }

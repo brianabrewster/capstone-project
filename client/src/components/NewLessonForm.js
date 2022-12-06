@@ -34,7 +34,7 @@ function NewLessonForm({students, teachers, addLesson}) {
     return(
         <div onSubmit={handleSubmit}>
         <h2>Schedule a lesson</h2>
-        <form>
+        <form className="form">
           <label>Date: </label>
           <input
             type="text"
