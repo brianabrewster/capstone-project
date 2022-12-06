@@ -6,6 +6,7 @@ import Home from './Home';
 import Profile from './Profile';
 import Browse from './Browse';
 import NewLessonForm from './NewLessonForm';
+import NewMessageForm from './NewMessageForm';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null)
   const [lessons, setLessons] = useState([]);
   const [isStudent, setIsStudent] = useState(false)
+  const [messages, setMessages] = useState([])
 
   function handleLogin(user){
     history.push(`/profile`)
@@ -41,6 +43,12 @@ function App() {
       .then((lessons) => setLessons(lessons));
   }, []);
 
+  useEffect(() => {
+    fetch("/messages")
+      .then((r) => r.json())
+      .then((messages) => setMessages(messages));
+  }, []);
+
 
   useEffect(() => {
     fetch("/students")
@@ -54,6 +62,10 @@ function App() {
       .then((r) => r.json())
       .then((teachers) => setTeachers(teachers));
   }, []);
+
+  function addNewMessage(newMessage) {
+    setMessages([...messages, newMessage]);
+  }
   
 
   function removeLesson(id) {
@@ -61,6 +73,13 @@ function App() {
       (lesson) => lesson.id !== id
     );
     setLessons(removeSelectedLesson);
+  }
+
+  function removeMessage(id) {
+    const removeSelectedMessage = messages.filter(
+      (message) => message.id !== id
+    );
+    setMessages(removeSelectedMessage);
   }
 
 
@@ -85,13 +104,16 @@ function App() {
             <Home isStudent={isStudent} setIsStudent={setIsStudent} handleLogin={handleLogin} currentUser={currentUser} setCurrentUser={setCurrentUser}/>
           </Route>
           <Route path="/profile">
-            <Profile lessons={lessons} students={students} teachers={teachers} removeLesson={removeLesson} updateLesson={updateLesson} currentUser={currentUser}/>
+            <Profile messages={messages} lessons={lessons} students={students} teachers={teachers} removeLesson={removeLesson} updateLesson={updateLesson} currentUser={currentUser} removeMessage={removeMessage}/>
           </Route>
           <Route path="/browse">
             <Browse setStudents={setStudents} setTeachers={setTeachers} students={students} teachers={teachers} isStudent={isStudent} currentUser={currentUser}/>
           </Route>
           <Route path="/newlesson">
             <NewLessonForm students={students} teachers={teachers} addLesson={addLesson}/>
+          </Route>
+          <Route path="/newmessage">
+            <NewMessageForm students={students} teachers={teachers} addNewMessage={addNewMessage}/>
           </Route>
         </Switch>
       </header>

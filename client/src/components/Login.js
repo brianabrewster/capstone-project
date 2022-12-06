@@ -75,6 +75,13 @@ function Login({handleShow, show, handleClose, handleLogin, currentUser, isStude
                 value={isStudent}
                 onClick={(e) => setIsStudent(true)}
             />
+             <Form.Check 
+                inline
+                type="checkbox"
+                label="Instructor"
+                value={isStudent}
+                onClick={(e) => setIsStudent(false)}
+            />
               <Button className = "closeLog"  onClick={handleClose}>
               Close
             </Button>

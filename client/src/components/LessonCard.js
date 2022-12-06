@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-function LessonCard({id, date, time, instrument, lesson, removeLesson, updateLesson}) {
-    console.log(lesson)
+function LessonCard({id, date, time, instrument, teacher, removeLesson, updateLesson}) {
+    // console.log(lesson)
     const history = useHistory()
     const [expand, setExpand] = useState(false)
     const [updatedDate, setUpdatedDate] = useState(date)
@@ -41,7 +41,8 @@ function LessonCard({id, date, time, instrument, lesson, removeLesson, updateLes
 
     return(
         <div className='card'>
-            <h2>{date}</h2>
+            <h2>Instructor: {teacher.name}</h2>
+            <h3>{date}</h3>
             <h3>{time}</h3>
             <h3>{instrument}</h3>
             <button onClick={expandForm}>Edit Lesson Details</button>
