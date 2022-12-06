@@ -109,11 +109,11 @@ function App() {
           <Route path="/browse">
             <Browse setStudents={setStudents} setTeachers={setTeachers} students={students} teachers={teachers} isStudent={isStudent} currentUser={currentUser}/>
           </Route>
-          <Route path="/newlesson/">
-            <NewLessonForm students={students} teachers={teachers} addLesson={addLesson}/>
+          <Route path="/newlesson/:id">
+            <NewLessonForm currentUser={currentUser} students={students} teachers={teachers} addLesson={addLesson}/>
           </Route>
-          <Route path="/newmessage">
-            <NewMessageForm students={students} teachers={teachers} addNewMessage={addNewMessage}/>
+          <Route path="/newmessage/:id">
+            <NewMessageForm students={students} teachers={teachers} addNewMessage={addNewMessage} currentUser={currentUser}/>
           </Route>
         </Switch>
       </header>

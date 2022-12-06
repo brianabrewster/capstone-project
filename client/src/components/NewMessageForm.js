@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
-function NewMessageForm({ students, teachers, addNewMessage }) {
+function NewMessageForm({ students, teachers, addNewMessage, currentUser }) {
 
-const history = useHistory();
-  const [to, setTo] = useState("");
-  const [from, setFrom] = useState("");
+    const {id} = useParams();
+
+    const currentStudent = students.find((student) => student.id === parseInt(id))
+
+    const history = useHistory();
+  const [to, setTo] = useState(currentStudent.id);
+  const [from, setFrom] = useState(currentUser.id);
   const [body, setBody] = useState("");
 
   function handleSubmit(e) {
@@ -37,7 +41,7 @@ const history = useHistory();
             onChange={(e) => setTo(e.target.value)}
             value={to}
           >
-            <option value="">Select a student</option>
+            <option value={currentStudent.id}>{currentStudent.name}</option>
             {students.map((student) => (
               <option key={student.name} value={student.id}>
                 {student.name}
@@ -50,7 +54,7 @@ const history = useHistory();
             onChange={(e) => setFrom(e.target.value)}
             value={from}
           >
-            <option value="">Select an instructor</option>
+            <option value={currentUser.id}>{currentUser.name}</option>
             {teachers.map((teacher) => (
               <option key={teacher.name} value={teacher.id}>
                 {teacher.name}

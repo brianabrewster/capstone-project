@@ -1,14 +1,20 @@
 import React, { useState } from "react";
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
-function NewLessonForm({students, teachers, addLesson}) {
+function NewLessonForm({students, teachers, addLesson, currentUser}) {
 
+  const {id} = useParams();
+
+  const currentTeacher = teachers.find((teacher) => teacher.id === parseInt(id))
+  
     const history = useHistory();
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
     const [instrument, setInstrument] = useState("");
-    const [studentName, setStudentName] = useState("");
-    const [teacherName, setTeacherName] = useState("");
+    const [studentName, setStudentName] = useState(currentUser.id);
+    const [teacherName, setTeacherName] = useState(currentTeacher.id);
+
+  
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -67,7 +73,7 @@ function NewLessonForm({students, teachers, addLesson}) {
             onChange={(e) => setTeacherName(e.target.value)}
             value={teacherName}
           >
-            <option value="">Select an instructor</option>
+            <option value={currentTeacher.id}>{currentTeacher.name}</option>
             {teachers.map((teacher) => (
               <option key={teacher.name} value={teacher.id}>
                 {teacher.name}
@@ -80,7 +86,7 @@ function NewLessonForm({students, teachers, addLesson}) {
             onChange={(e) => setStudentName(e.target.value)}
             value={studentName}
           >
-            <option value="">Select a student</option>
+            <option value={currentUser.id}>{currentUser.name}</option>
             {students.map((student) => (
               <option key={student.name} value={student.id}>
                 {student.name}

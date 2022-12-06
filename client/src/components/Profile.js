@@ -5,6 +5,7 @@ import MessageCard from './MessageCard';
 function Profile({lessons, messages, removeLesson, updateLesson, currentUser, removeMessage}) {
     // console.log(lessons)
     const myLessonsList = lessons?.map((lesson) => {
+        console.log(lesson.teacher)
         return <LessonCard 
         key={lesson.id}
         id={lesson.id}
@@ -16,7 +17,6 @@ function Profile({lessons, messages, removeLesson, updateLesson, currentUser, re
         teacher={lesson.teacher}
         removeLesson={removeLesson}
         updateLesson={updateLesson}
-        teacherId={lesson.teacher_id}
         />
     })
 

@@ -2,7 +2,6 @@ import React from "react";
 
 function MessageCard({ id, student, teacher, body, removeMessage, message }) {
 
-  console.log(message)
 
   function handleMessageDelete() {
     fetch(`/messages/${id}`, {

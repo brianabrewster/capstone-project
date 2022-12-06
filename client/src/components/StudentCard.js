@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import NewMessageForm from "./NewMessageForm";
 
-function StudentCard({name, age, city, instruments, experience}) {
+function StudentCard({name, age, id, city, instruments, experience}) {
     return(
         <div className="card">
             <h2>{name}</h2>
@@ -10,7 +9,7 @@ function StudentCard({name, age, city, instruments, experience}) {
             <p>City: {city}</p>
             <p>Instrument: {instruments}</p>
             <p>Experience: {experience}</p>
-            <Link to='/newmessage'>
+            <Link to={`/newmessage/${id}`}>
             <button>Send a Message</button>
             </Link>
         </div>

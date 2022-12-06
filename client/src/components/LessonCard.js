@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 function LessonCard({id, date, time, instrument, teacher, removeLesson, updateLesson}) {
     // console.log(lesson)
+    console.log(teacher.id)
     const history = useHistory()
     const [expand, setExpand] = useState(false)
     const [updatedDate, setUpdatedDate] = useState(date)
