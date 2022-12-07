@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory, useParams } from 'react-router-dom';
 
-function NewLessonForm({students, teachers, addLesson, currentUser}) {
+function NewLessonForm({students, teachers, addLesson, currentUser, accepted}) {
 
   const {id} = useParams();
 
@@ -28,6 +28,7 @@ function NewLessonForm({students, teachers, addLesson, currentUser}) {
               date: date,
               time: time,
               instrument: instrument,
+              accepted: accepted,
               student_id: studentName,
               teacher_id: teacherName
             }),
@@ -39,7 +40,7 @@ function NewLessonForm({students, teachers, addLesson, currentUser}) {
     
     return(
         <div onSubmit={handleSubmit}>
-        <h2>Schedule a lesson</h2>
+        <h1>Schedule a lesson</h1>
         <form className="form">
           <label>Date: </label>
           <input

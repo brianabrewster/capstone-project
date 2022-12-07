@@ -1,9 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 body {
-  background-color: rgb(186, 195, 192);
+  background-image: url("https://images.unsplash.com/photo-1492446190781-58ac4285911d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8OXx8fGVufDB8fHx8&w=1000&q=80");
+  /* background-color: rgb(186, 195, 192); */
+  color: aliceblue;
   font-family: 'Optima', sans-serif;
   padding-left: 25px;
   padding-right: 25px;
@@ -32,15 +31,16 @@ code {
   display: inline-block;
   vertical-align: middle;
   border-radius: 2rem;
+  color: black;
   background-color: aliceblue;
-  opacity: 0.45;
+  opacity: 0.8;
   box-shadow: 3pt 6px rgba(3, 3, 3, 0.8);
   box-shadow: inset;
 }
 
 nav {
-  background-color: rgb(106, 111, 109);
-  opacity: .7;
+  background-color: black;
+  color: aliceblue;
   text-align: center;
   border-radius: 5px;
   box-sizing: border-box;
@@ -50,6 +50,11 @@ nav {
   flex: 250px;
   display: flex;
   justify-content: space-between;
+}
+
+nav a {
+  color: white;
+  margin-top: 10px;
 }
 
 nav a:hover {
@@ -89,6 +94,18 @@ nav h1 {
   padding: 30px;
 }
 
+.form {
+  align-content: center;
+  margin-left: 33%;
+  max-width: 30%;
+  padding: 20px;
+  border-radius: 5px;
+  border-style: inset;
+  border-width: 3px;
+  border-color: white);
+  margin-top: 10%;
+}
+
 
 .home-button {
   text-align: center;
@@ -99,4 +116,9 @@ nav h1 {
   border-radius: 5px;
   box-shadow: 3pt 6px rgba(3, 3, 3, 0.8);
   box-shadow: inset;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
 }

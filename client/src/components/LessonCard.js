@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-function LessonCard({id, date, time, instrument, teacher, removeLesson, updateLesson}) {
-    // console.log(lesson)
-    console.log(teacher.id)
+function LessonCard({lesson, accepted, setAccepted, id, date, time, instrument, teacher, removeLesson, updateLesson, currentUser}) {
+    // console.log(id)
     const history = useHistory()
     const [expand, setExpand] = useState(false)
     const [updatedDate, setUpdatedDate] = useState(date)
@@ -13,6 +12,12 @@ function LessonCard({id, date, time, instrument, teacher, removeLesson, updateLe
         setExpand(prev => !prev)
       }
 
+    function handleAccepted(e) {
+      if (currentUser?.is_student === false)
+      setAccepted(true)
+    }
+    
+console.log(lesson)
     function handleLessonDelete() {
         fetch(`/lessons/${id}`, {
           method: "DELETE",
@@ -29,7 +34,7 @@ function LessonCard({id, date, time, instrument, teacher, removeLesson, updateLe
           body: JSON.stringify({
             date: updatedDate,
             time: updatedTime,
-            instrument: instrument
+            instrument: instrument,
           })
         })
         .then(r => r.json())
@@ -46,6 +51,7 @@ function LessonCard({id, date, time, instrument, teacher, removeLesson, updateLe
             <h3>{date}</h3>
             <h3>{time}</h3>
             <h3>{instrument}</h3>
+            <button value={id} onClick={(e) => handleAccepted(e)}>{accepted ? "Accepted" : "Pending"}</button>
             <button onClick={expandForm}>Edit Lesson Details</button>
             <button onClick={handleLessonDelete}>Cancel Lesson</button>
             <br></br>

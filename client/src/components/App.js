@@ -17,6 +17,7 @@ function App() {
   const [lessons, setLessons] = useState([]);
   const [isStudent, setIsStudent] = useState(false)
   const [messages, setMessages] = useState([])
+  const [accepted, setAccepted] = useState(false)
 
   function handleLogin(user){
     history.push(`/profile`)
@@ -104,13 +105,13 @@ function App() {
             <Home isStudent={isStudent} setIsStudent={setIsStudent} handleLogin={handleLogin} currentUser={currentUser} setCurrentUser={setCurrentUser}/>
           </Route>
           <Route path="/profile">
-            <Profile messages={messages} lessons={lessons} students={students} teachers={teachers} removeLesson={removeLesson} updateLesson={updateLesson} currentUser={currentUser} removeMessage={removeMessage}/>
+            <Profile accepted={accepted} setAccepted={setAccepted} messages={messages} lessons={lessons} students={students} teachers={teachers} removeLesson={removeLesson} updateLesson={updateLesson} currentUser={currentUser} removeMessage={removeMessage}/>
           </Route>
           <Route path="/browse">
             <Browse setStudents={setStudents} setTeachers={setTeachers} students={students} teachers={teachers} isStudent={isStudent} currentUser={currentUser}/>
           </Route>
           <Route path="/newlesson/:id">
-            <NewLessonForm currentUser={currentUser} students={students} teachers={teachers} addLesson={addLesson}/>
+            <NewLessonForm accepted={accepted} currentUser={currentUser} students={students} teachers={teachers} addLesson={addLesson}/>
           </Route>
           <Route path="/newmessage/:id">
             <NewMessageForm students={students} teachers={teachers} addNewMessage={addNewMessage} currentUser={currentUser}/>
