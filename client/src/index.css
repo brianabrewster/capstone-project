@@ -1,7 +1,8 @@
 
 body {
-  background-image: url("https://images.unsplash.com/photo-1492446190781-58ac4285911d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8OXx8fGVufDB8fHx8&w=1000&q=80");
-  /* background-color: rgb(186, 195, 192); */
+  background-image: url("https://w0.peakpx.com/wallpaper/611/956/HD-wallpaper-starry-sky-night-dark-sky-stars.jpg");
+  /* background-image: url("https://w0.peakpx.com/wallpaper/699/604/HD-wallpaper-starry-sky-stars-space-dark-astronomy-thumbnail.jpg"); */
+  /* background-image: url("https://images.wallpaperscraft.com/image/single/stars_milky_way_space_116893_3840x2160.jpg"); */
   color: aliceblue;
   font-family: 'Optima', sans-serif;
   padding-left: 25px;
@@ -102,7 +103,7 @@ nav h1 {
   border-radius: 5px;
   border-style: inset;
   border-width: 3px;
-  border-color: white);
+  border-color: white;
   margin-top: 10%;
 }
 
@@ -119,6 +120,17 @@ nav h1 {
 }
 
 .profile {
-  display: flex;
-  flex-direction: column;
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  grid-gap: 40%; 
+  border: 1px solid black; 
+  width: 50%; 
+  padding-left: 8%;
+
+}
+.col-1 {
+  margin: 10px; 
+}
+.col-2 {
+  margin: 10px; 
 }

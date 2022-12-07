@@ -15,7 +15,7 @@ function MessageCard({ id, student, teacher, body, removeMessage, message }) {
       <h4>To: {student.name}</h4>
       <h4>From: {teacher.name}</h4>
       <p>{body}</p>
-      <button onClick={handleMessageDelete}>Delete This Message</button>
+      <button onClick={handleMessageDelete}>Delete</button>
     </div>
   );
 }
