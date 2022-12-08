@@ -93,11 +93,11 @@ function Profile({lessons, messages, removeLesson, updateLesson, currentUser, re
             <br></br>
             <ul>{currentUser?.is_student ? studentMessageList : null}</ul>
             </div>
-            <div className='col-1'>
+            <div className='col-3'>
             {currentUser?.is_student ? null : <h1>Messages Sent:</h1>}
             <ul>{currentUser?.is_student ? null : messageList}</ul>
             </div>
-            <div className='col-2'>
+            <div className='col-4'>
             {currentUser?.is_student ? null : <h1>My Lesson Requests:</h1>}
             <ul>{currentUser?.is_student ? null : teacherLessonsList}</ul>
             </div>
