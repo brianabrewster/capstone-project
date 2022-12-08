@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory, useParams } from 'react-router-dom';
 
-function NewLessonForm({students, teachers, addLesson, currentUser, accepted}) {
+function NewLessonForm({students, teachers, addLesson, currentUser}) {
 
   const {id} = useParams();
 
@@ -28,7 +28,7 @@ function NewLessonForm({students, teachers, addLesson, currentUser, accepted}) {
               date: date,
               time: time,
               instrument: instrument,
-              accepted: accepted,
+              accepted: false,
               student_id: studentName,
               teacher_id: teacherName
             }),

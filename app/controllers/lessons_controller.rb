@@ -28,6 +28,6 @@ class LessonsController < ApplicationController
     private 
 
     def lesson_params
-        params.permit(:date, :time, :instrument, :student_id, :teacher_id)
+        params.permit(:date, :time, :instrument, :student_id, :teacher_id, :accepted)
     end
 end

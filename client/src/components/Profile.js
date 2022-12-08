@@ -2,9 +2,8 @@ import React from 'react';
 import LessonCard from './LessonCard';
 import MessageCard from './MessageCard';
 
-function Profile({lessons, messages, removeLesson, updateLesson, currentUser, removeMessage, accepted, setAccepted}) {
+function Profile({lessons, messages, removeLesson, updateLesson, currentUser, removeMessage}) {
     // console.log(lessons)
-    console.log(currentUser)
     const myLessonsList = lessons?.map((lesson) => {
         return <LessonCard 
         key={lesson.id}
@@ -18,8 +17,8 @@ function Profile({lessons, messages, removeLesson, updateLesson, currentUser, re
         removeLesson={removeLesson}
         updateLesson={updateLesson}
         currentUser={currentUser}
-        accepted={accepted} 
-        setAccepted={setAccepted}
+        // accepted={accepted} 
+        // setAccepted={setAccepted}
         />
     })
 
@@ -40,8 +39,8 @@ function Profile({lessons, messages, removeLesson, updateLesson, currentUser, re
         removeLesson={removeLesson}
         updateLesson={updateLesson}
         currentUser={currentUser}
-        accepted={accepted} 
-        setAccepted={setAccepted}
+        // accepted={accepted} 
+        // setAccepted={setAccepted}
         />
     })
 

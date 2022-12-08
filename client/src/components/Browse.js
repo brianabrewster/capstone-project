@@ -2,7 +2,7 @@ import React from 'react';
 import StudentCard from './StudentCard';
 import TeacherCard from './TeacherCard';
 
-function Browse({students, teachers, setCurrentCity, currentUser, filteredStudents, filteredTeachers}) {
+function Browse({setCurrentCity, currentUser, filteredStudents, filteredTeachers}) {
 
 
     function handleChange(e) {

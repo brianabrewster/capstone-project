@@ -17,16 +17,16 @@ function App() {
   const [lessons, setLessons] = useState([]);
   const [isStudent, setIsStudent] = useState(false)
   const [messages, setMessages] = useState([])
-  const [accepted, setAccepted] = useState(false)
   const [currentCity, setCurrentCity] = useState("All")
 
-  let filteredTeachers = teachers.filter((teacher) => {
+
+  let filteredTeachers = teachers?.filter((teacher) => {
     if (currentCity === "All") {
       return true
     } else {
       return teacher.city === currentCity}})
 
-  let filteredStudents = students.filter((student) => {
+  let filteredStudents = students?.filter((student) => {
     if (currentCity === "All") {
       return true} else
       { return student.city === currentCity
@@ -118,13 +118,13 @@ function App() {
             <Home isStudent={isStudent} setIsStudent={setIsStudent} handleLogin={handleLogin} currentUser={currentUser} setCurrentUser={setCurrentUser}/>
           </Route>
           <Route path="/profile">
-            <Profile accepted={accepted} setAccepted={setAccepted} messages={messages} lessons={lessons} students={students} teachers={teachers} removeLesson={removeLesson} updateLesson={updateLesson} currentUser={currentUser} removeMessage={removeMessage}/>
+            <Profile messages={messages} lessons={lessons} students={students} teachers={teachers} removeLesson={removeLesson} updateLesson={updateLesson} currentUser={currentUser} removeMessage={removeMessage}/>
           </Route>
           <Route path="/browse">
-            <Browse setCurrentCity={setCurrentCity} filteredStudents={filteredStudents} filteredTeachers={filteredTeachers} setStudents={setStudents} setTeachers={setTeachers} students={students} teachers={teachers} isStudent={isStudent} currentUser={currentUser}/>
+            <Browse setCurrentCity={setCurrentCity} filteredStudents={filteredStudents} filteredTeachers={filteredTeachers} isStudent={isStudent} currentUser={currentUser}/>
           </Route>
           <Route path="/newlesson/:id">
-            <NewLessonForm accepted={accepted} currentUser={currentUser} students={students} teachers={teachers} addLesson={addLesson}/>
+            <NewLessonForm currentUser={currentUser} students={students} teachers={teachers} addLesson={addLesson}/>
           </Route>
           <Route path="/newmessage/:id">
             <NewMessageForm students={students} teachers={teachers} addNewMessage={addNewMessage} currentUser={currentUser}/>

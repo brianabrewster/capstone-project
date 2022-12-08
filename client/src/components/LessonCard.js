@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-function LessonCard({lesson, accepted, setAccepted, id, date, time, instrument, teacher, removeLesson, updateLesson, currentUser}) {
+function LessonCard({lesson, id, date, time, instrument, teacher, removeLesson, updateLesson, currentUser}) {
     // console.log(id)
     const history = useHistory()
     const [expand, setExpand] = useState(false)
     const [updatedDate, setUpdatedDate] = useState(date)
     const [updatedTime, setUpdatedTime] = useState(time)
+    const [accepted, setAccepted] = useState(lesson.accepted)
 
     function expandForm() {
         setExpand(prev => !prev)
@@ -14,22 +15,21 @@ function LessonCard({lesson, accepted, setAccepted, id, date, time, instrument, 
 
     function handleAccepted(e) {
       if (currentUser?.is_student === false)
-      setAccepted(true)
       fetch(`/lessons/${id}`, {
         method: 'PATCH',
         headers: {
           "Content-Type": "application/json"},
         body: JSON.stringify({
-         accepted: accepted
+         accepted: true
         })
       })
       .then(r => r.json())
   .then(data => {
+      setAccepted(true)
       updateLesson(data)
   })
     }
 
-console.log(lesson)
     function handleLessonDelete() {
         fetch(`/lessons/${id}`, {
           method: "DELETE",
