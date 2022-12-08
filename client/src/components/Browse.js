@@ -2,21 +2,14 @@ import React from 'react';
 import StudentCard from './StudentCard';
 import TeacherCard from './TeacherCard';
 
-function Browse({students, teachers, setStudents, setTeachers, currentUser}) {
+function Browse({students, teachers, setCurrentCity, currentUser, filteredStudents, filteredTeachers}) {
 
 
     function handleChange(e) {
-        let filteredTeachers = teachers.filter((teacher) => {
-            return teacher.city === e.target.value
-        })
-        let filteredStudents = students.filter((student) => {
-            return student.city === e.target.value
-        })
-        setTeachers(filteredTeachers);
-        setStudents(filteredStudents);
+     setCurrentCity(e.target.value)
     };
 
-    const studentList = students?.map((student) => {
+    const studentList = filteredStudents?.map((student) => {
         return <StudentCard 
         key={student.id}
         id={student.id}
@@ -28,7 +21,7 @@ function Browse({students, teachers, setStudents, setTeachers, currentUser}) {
         />
     })
 
-    const teacherList = teachers?.map((teacher) => {
+    const teacherList = filteredTeachers?.map((teacher) => {
         return <TeacherCard 
         key={teacher.id}
         id={teacher.id}
@@ -49,7 +42,7 @@ function Browse({students, teachers, setStudents, setTeachers, currentUser}) {
             <select
                 name="cities"
                 onChange={handleChange}>
-                <option value="">Select your city...</option>
+                <option value="All">Select your city...</option>
                 <option value="Austin">Austin</option>
                 <option value="Houston">Houston</option>
                 <option value="Los Angeles">Los Angeles</option>

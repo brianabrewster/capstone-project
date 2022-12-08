@@ -15,6 +15,18 @@ function LessonCard({lesson, accepted, setAccepted, id, date, time, instrument, 
     function handleAccepted(e) {
       if (currentUser?.is_student === false)
       setAccepted(true)
+      fetch(`/lessons/${id}`, {
+        method: 'PATCH',
+        headers: {
+          "Content-Type": "application/json"},
+        body: JSON.stringify({
+         accepted: accepted
+        })
+      })
+      .then(r => r.json())
+  .then(data => {
+      updateLesson(data)
+  })
     }
 
 console.log(lesson)
