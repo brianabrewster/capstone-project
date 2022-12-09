@@ -63,6 +63,9 @@ nav a:hover {
   font-weight: bold;
 }
 
+nav a.active {
+  font-weight: bold;
+}
 nav a:active {
   font-weight: bold;
 }
