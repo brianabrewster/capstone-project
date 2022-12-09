@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
-function Login({handleShow, show, handleClose, handleLogin, currentUser, isStudent, setIsStudent}){
+function Login({handleShow, show, handleClose, handleLogin, currentUser, setCurrentUser, isStudent, setIsStudent}){
 
   const [loginData, setLoginData] = useState({username: "", password: ""})
   const [errors, setErrors] = useState([]);
+
+  const history = useHistory();
 
   const handleOnChange = (event) => {
     const name = event.target.name
@@ -14,6 +17,19 @@ function Login({handleShow, show, handleClose, handleLogin, currentUser, isStude
 
     setLoginData({...loginData, [name]: value})
   }
+
+  const handleLogOut = (e) => {
+    e.preventDefault();
+      fetch(`/logout`, {
+        method:"DELETE"
+      })
+      .then(res =>{
+        if(res.ok){
+          history.push('/')
+          setCurrentUser(null)
+        }
+      })
+    }
 
   const handleOnSubmit = (e) => {
     e.preventDefault()
@@ -36,9 +52,9 @@ function Login({handleShow, show, handleClose, handleLogin, currentUser, isStude
 
     return( 
     <>
-        <Button className="home-button" variant="primary" onClick={handleShow}>
-         {currentUser? "Logout" : "Login"}
-        </Button>
+       {!currentUser? <Button className="home-button" variant="primary" onClick={handleShow}>
+      Login</Button> : <Button className="home-button" variant="primary" onClick={handleLogOut}>
+      Logout</Button>}
       <div>
         <Modal className="login-form" show={show} onHide={handleClose}>
           <Modal.Header >
