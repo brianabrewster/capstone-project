@@ -1,6 +1,7 @@
 
 body {
-  background-image: url("https://w0.peakpx.com/wallpaper/611/956/HD-wallpaper-starry-sky-night-dark-sky-stars.jpg");
+  background-image: url("https://www.teahub.io/photos/full/288-2882860_music-background-minimalist.jpg");
+  /* background-image: url("https://w0.peakpx.com/wallpaper/611/956/HD-wallpaper-starry-sky-night-dark-sky-stars.jpg"); */
   /* background-image: url("https://w0.peakpx.com/wallpaper/699/604/HD-wallpaper-starry-sky-stars-space-dark-astronomy-thumbnail.jpg"); */
   /* background-image: url("https://images.wallpaperscraft.com/image/single/stars_milky_way_space_116893_3840x2160.jpg"); */
   color: aliceblue;
@@ -123,7 +124,6 @@ nav h1 {
   display: grid; 
   grid-template-columns: 1fr 1fr; 
   grid-gap: 40%; 
-  border: 1px solid black; 
   width: 50%; 
   padding-left: 8%;
 
