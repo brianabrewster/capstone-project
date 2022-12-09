@@ -63,7 +63,7 @@ function LessonCard({lesson, id, date, time, instrument, teacher, removeLesson, 
             <h3>{date}</h3>
             <h3>{time}</h3>
             <h3>{instrument}</h3>
-            <button value={id} onClick={(e) => handleAccepted(e)}>{accepted ? "Accepted" : "Pending"}</button>
+            <button value={id} onClick={(e) => handleAccepted(e)}>{accepted ? "Accepted" : "Pending..."}</button>
             <br></br>
             <button onClick={expandForm}>Edit Lesson Details</button>
             <button onClick={handleLessonDelete}>Cancel Lesson</button>

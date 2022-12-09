@@ -1,9 +1,7 @@
 
 body {
-  background-image: url("https://www.teahub.io/photos/full/288-2882860_music-background-minimalist.jpg");
-  /* background-image: url("https://w0.peakpx.com/wallpaper/611/956/HD-wallpaper-starry-sky-night-dark-sky-stars.jpg"); */
-  /* background-image: url("https://w0.peakpx.com/wallpaper/699/604/HD-wallpaper-starry-sky-stars-space-dark-astronomy-thumbnail.jpg"); */
-  /* background-image: url("https://images.wallpaperscraft.com/image/single/stars_milky_way_space_116893_3840x2160.jpg"); */
+  /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgQdol4o_WSfkdZu2cHJJegFvOVsavyf0bfGE4-bPXtWHEftoxgegPokOnkm7ex_HEbUg&usqp=CAU"); */
+  background-image: url("https://c.wallhere.com/photos/9e/35/minimalism-161428.jpg!d");
   color: aliceblue;
   font-family: 'Optima', sans-serif;
   padding-left: 25px;
@@ -32,7 +30,7 @@ code {
   min-width: 325px;
   display: inline-block;
   vertical-align: middle;
-  border-radius: 2rem;
+  border-radius: 1rem;
   color: black;
   background-color: aliceblue;
   opacity: 0.8;
@@ -41,8 +39,9 @@ code {
 }
 
 nav {
-  background-color: black;
-  color: aliceblue;
+  background-color: white;
+  opacity: .8;
+  color: black;
   text-align: center;
   border-radius: 5px;
   box-sizing: border-box;
@@ -55,8 +54,9 @@ nav {
 }
 
 nav a {
-  color: white;
+  color: black;
   margin-top: 10px;
+  font-size: 20px;
 }
 
 nav a:hover {
